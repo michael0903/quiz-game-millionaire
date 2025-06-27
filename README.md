@@ -1,13 +1,13 @@
 # 🎯 Who Wants To Be A Millionaire? Quiz Game
 
-[![Live Demo](https://img.shields.io/badge/▶️_Play_Now-GitHub_Pages-brightgreen?style=for-the-badge)](https://USERNAME.github.io/REPOSITORY_NAME/)
-[![Download ZIP](https://img.shields.io/badge/📥_Download-ZIP_File-blue?style=for-the-badge)](https://github.com/USERNAME/REPOSITORY_NAME/releases/latest)
+[![Live Demo](https://img.shields.io/badge/▶️_Play_Now-GitHub_Pages-brightgreen?style=for-the-badge)](https://michael0903.github.io/quiz-game-millionaire/)
+[![Download ZIP](https://img.shields.io/badge/📥_Download-ZIP_File-blue?style=for-the-badge)](https://github.com/michael0903/quiz-game-millionaire/releases/latest)
 
 A fully interactive **Who Wants To Be A Millionaire?** quiz game built with vanilla HTML, CSS, and JavaScript. Test your knowledge with 15 questions of increasing difficulty and compete for the virtual million-dollar prize!
 
 ## 🎮 Play Online
 
-**[🚀 Play the Game Live](https://USERNAME.github.io/REPOSITORY_NAME/)**
+**[🚀 Play the Game Live](https://michael0903.github.io/quiz-game-millionaire/)**
 
 No downloads required! Click the link above to play directly in your browser.
 
@@ -48,15 +48,15 @@ No downloads required! Click the link above to play directly in your browser.
 
 ### Option 1: Download ZIP (Easiest)
 
-1. Go to [Releases](https://github.com/USERNAME/REPOSITORY_NAME/releases/latest)
+1. Go to [Releases](https://github.com/michael0903/quiz-game-millionaire/releases/latest)
 2. Download the latest ZIP file
 3. Extract and run `play-game.bat` (Windows) or open `index.html`
 
 ### Option 2: Clone Repository
 
 ```bash
-git clone https://github.com/USERNAME/REPOSITORY_NAME.git
-cd REPOSITORY_NAME
+git clone https://github.com/michael0903/quiz-game-millionaire.git
+cd quiz-game-millionaire
 ```
 
 Then open `index.html` in your web browser.
