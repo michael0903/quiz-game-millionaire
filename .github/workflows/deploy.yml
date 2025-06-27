@@ -49,14 +49,10 @@ jobs:
 
           echo "Basic validation complete."
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
 
   # Deployment job
   deploy:
