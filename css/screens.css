@@ -1,0 +1,130 @@
+/* Screen-specific styles (welcome, transition, result) */
+
+#welcome-screen {
+  text-align: center;
+}
+
+#welcome-screen h1 {
+  color: var(--millionaire-gold);
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Impact",
+    "Arial Black", sans-serif;
+  font-style: italic;
+  font-size: 3.3em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+
+#language-selection button {
+  padding: 12px 25px;
+  font-size: 20px;
+  margin: 0 15px;
+  cursor: pointer;
+  background-color: var(--millionaire-gold);
+  color: var(--millionaire-deep-blue);
+  border: 2px solid var(--millionaire-orange);
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#language-selection button:hover {
+  background-color: var(--millionaire-orange);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Specific styling for welcome screen volume control if needed */
+#welcome-volume-control {
+  margin-top: 30px;
+}
+
+#transition-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+}
+
+#transition-screen.hidden {
+  /* This utility class might be better in base.css if used elsewhere */
+  display: none;
+}
+
+#transition-message {
+  font-size: 3.3em;
+  color: var(--millionaire-gold);
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Impact",
+    "Arial Black", sans-serif;
+  font-style: italic;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Result Screen */
+.result-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.result-screen:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease;
+}
+
+#result-message {
+  font-size: 3.85em;
+  color: var(--millionaire-gold);
+  margin-bottom: 20px;
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Impact",
+    "Arial Black", sans-serif;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+#result-prize {
+  font-size: 2.75em;
+  color: #ffffff;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+#restart-btn {
+  background-color: var(--correct-green);
+  color: white;
+  border: none;
+  padding: 18px 35px;
+  font-size: 1.54em;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+#restart-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}

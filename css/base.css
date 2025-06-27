@@ -1,0 +1,44 @@
+/* --- General Styles --- */
+body {
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Arial",
+    "Helvetica Neue", Helvetica, sans-serif; /* More neutral base */
+  background-color: #02022db3; /* Slightly darker, more saturated blue */
+  background-image: radial-gradient(
+    circle,
+    #0d0d3f 0%,
+    #02022d 70%
+  ); /* Subtle spotlight effect */
+  color: #e0e0e0; /* Slightly off-white for text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll with wide elements */
+}
+
+/* --- Color Palette (CSS Variables for easy changes) --- */
+:root {
+  --millionaire-deep-blue: #02022d;
+  --millionaire-mid-blue: #012d86; /* Updated as per user request */
+  --millionaire-purple: #011f5c; /* Refactored based on the new mid-blue, darker shade */
+  --millionaire-gold: #f9b000; /* Bright, rich gold */
+  --millionaire-orange: #ff7000; /* For highlights, selections */
+  --millionaire-light-blue-glow: #00a0e040; /* For subtle glows */
+  --text-light: #f0f0f0;
+  --text-dark: #111;
+  --correct-green: #28a745; /* Brighter green */
+  --incorrect-red: #dc3545; /* Brighter red */
+  /* Add any other root variables like --border-thickness here if not already present */
+}
+
+.hidden {
+  display: none !important;
+}
+
+.translation {
+  font-size: 0.88em; /* Increased from 0.8em */
+  color: #aaa; /* Lighter grey */
+}

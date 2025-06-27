@@ -1,0 +1,511 @@
+/* Component styles (buttons, prize ladder, etc.) */
+
+/* Lifelines */
+.lifelines {
+  margin-bottom: 30px; /* More space */
+  display: flex;
+  justify-content: space-around;
+  width: 100%; /* Take full width of its container */
+}
+
+.lifeline {
+  background-color: var(--millionaire-purple);
+  color: var(--text-light);
+  border: 2px solid var(--millionaire-gold);
+  padding: 0; /* Remove padding, fixed size */
+  margin: 0 5px;
+  border-radius: 50%; /* Circular lifelines */
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 120px; /* Fixed width */
+  height: 60px; /* Fixed height */
+  font-size: 20px; /* Increased from 18px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 2px 3px rgba(255, 255, 255, 0.2);
+}
+
+.lifeline:hover:not(:disabled) {
+  background-color: var(--millionaire-gold);
+  color: var(--millionaire-deep-blue);
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 3px rgba(255, 255, 255, 0.2);
+}
+
+.lifeline:disabled {
+  background-color: #444; /* Darker grey */
+  color: #888;
+  border-color: #666;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: line-through;
+  text-shadow: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Question Container */
+.question-container {
+  background-color: var(--millionaire-purple);
+  color: var(--text-light);
+  padding: 30px 50px; /* More padding */
+  text-align: center;
+  margin-bottom: 25px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column; /* Stack question-text and facts-container */
+  justify-content: center; /* Center content vertically if space allows */
+  align-items: stretch; /* Make children take full width */
+  border: 3px solid var(--millionaire-gold);
+  border-radius: 10px;
+  clip-path: polygon(
+    calc(0% + var(--border-thickness) * 1.5) 0%,
+    calc(100% - var(--border-thickness) * 1.5) 0%,
+    100% 50%,
+    calc(100% - var(--border-thickness) * 1.5) 100%,
+    calc(0% + var(--border-thickness) * 1.5) 100%,
+    0% 50%
+  );
+  position: relative;
+  box-shadow: 0 0 20px var(--millionaire-light-blue-glow),
+    0 5px 15px rgba(0, 0, 0, 0.5);
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Georgia",
+    serif;
+  filter: drop-shadow(var(--border-thickness) 0 0 var(--millionaire-gold))
+    drop-shadow(calc(-1 * var(--border-thickness)) 0 0 var(--millionaire-gold))
+    drop-shadow(0 var(--border-thickness) 0 var(--millionaire-gold))
+    drop-shadow(0 calc(-1 * var(--border-thickness)) 0 var(--millionaire-gold));
+}
+
+#question-text {
+  font-size: 1.76em;
+  line-height: 1.4;
+  font-weight: normal;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  flex-shrink: 0; /* Prevent question text from shrinking if facts are very long */
+}
+
+/* Facts Container */
+#facts-container {
+  display: none; /* Hidden by default, JS will make it visible */
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 204, 0, 0.3);
+  text-align: left; /* Override parent's text-align: center */
+  /* max-height: 150px; */ /* Removed to allow full content height */
+  /* overflow-y: auto; */ /* Removed as content should not overflow */
+  color: #e0e0e0; /* Lighter text for facts */
+  font-size: 1.1em;
+}
+
+#facts-container h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--millionaire-gold);
+  font-size: 1.1em;
+  border-bottom: 1px solid rgba(255, 204, 0, 0.5);
+  padding-bottom: 5px;
+}
+
+#facts-container p {
+  margin-bottom: 8px;
+  line-height: 1.4;
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Arial",
+    sans-serif; /* Ensure readability */
+}
+
+#facts-container p.correct-answer-fact-line {
+  color: var(--correct-green-text); /* A lighter green for text, or keep gold */
+  font-weight: bold;
+}
+#facts-container p.correct-answer-fact-line::before {
+  content: "✔ "; /* Add a checkmark or star for the correct answer's fact line */
+  color: var(--correct-green);
+}
+
+/* Answers Container */
+.answers-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.answer-btn {
+  background-color: var(--millionaire-purple);
+  color: var(--text-light);
+  border: 2px solid var(--millionaire-orange);
+  padding: 20px 80px;
+  cursor: pointer;
+  font-size: 1.32em;
+  text-align: left;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out,
+    border-color 0.2s ease-out, transform 0.2s ease-out,
+    box-shadow 0.2s ease-out, opacity 0.5s ease-in-out;
+}
+
+.option-prefix {
+  color: #ffd700;
+  margin-right: 5px;
+}
+
+.answer-btn:hover .option-prefix {
+  color: #fff;
+}
+
+.answer-btn.revealed {
+  opacity: 1;
+  visibility: visible;
+}
+
+.answer-btn .answer-prefix {
+  /* This is the more consistently used prefix style */
+  color: var(--millionaire-gold);
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 1.43em;
+}
+
+.answer-btn .answer-text {
+  flex-grow: 1;
+}
+
+.answer-btn:hover:not(:disabled) {
+  background-color: var(--millionaire-orange);
+  color: var(--millionaire-deep-blue);
+  border-color: var(--millionaire-gold);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.answer-btn:hover:not(:disabled) .answer-prefix {
+  color: var(--millionaire-deep-blue);
+}
+
+.answer-btn:disabled {
+  background-color: #001740;
+  border-color: #000f2a;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+.answer-btn.selected {
+  background-color: var(--millionaire-orange);
+  border-color: var(--millionaire-gold);
+  color: var(--millionaire-deep-blue);
+  animation: pulse-orange 1s infinite ease-in-out;
+}
+.answer-btn.selected .answer-prefix {
+  color: var(--millionaire-deep-blue);
+}
+.answer-btn.selected .option-prefix {
+  color: var(--millionaire-deep-blue);
+}
+
+.answer-btn.correct {
+  background-color: var(--correct-green);
+  border-color: #90ee90;
+  color: var(--millionaire-deep-blue);
+  animation: correct-answer-flash 1.4s 1 forwards;
+}
+
+.answer-btn.correct .answer-prefix {
+  color: var(--millionaire-deep-blue);
+}
+.answer-btn.correct .option-prefix {
+  color: var(--millionaire-deep-blue);
+}
+
+.answer-btn.incorrect {
+  background-color: var(--incorrect-red);
+  border-color: #ff7f7f;
+  color: white;
+  animation: shake-horizontal 0.5s;
+}
+.answer-btn.incorrect .answer-prefix {
+  color: white;
+}
+
+.answer-btn.hide-lifeline {
+  opacity: 0.2;
+  pointer-events: none;
+  background-color: #222;
+  border-color: #444;
+}
+
+/* Prize Ladder */
+.prize-ladder {
+  width: 100%;
+}
+.prize-ladder h2 {
+  text-align: center;
+  color: var(--millionaire-gold);
+  margin-bottom: 20px;
+  font-size: 1.98em;
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Impact",
+    "Arial Black", sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#prize-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#prize-list li {
+  padding: 7.5px 15px;
+  margin-bottom: 6px;
+  border-radius: 5px;
+  background-color: var(--millionaire-purple);
+  color: #b0b0b0;
+  font-size: 1.21em;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid transparent;
+  font-weight: 500;
+}
+
+#prize-list li .prize-number {
+  color: #888;
+  margin-right: 10px;
+  width: 25px;
+  text-align: right;
+}
+#prize-list li .prize-amount {
+  flex-grow: 1;
+  text-align: right;
+}
+
+#prize-list li.current {
+  background-color: var(--millionaire-orange);
+  color: var(--text-dark);
+  font-weight: bold;
+  transform: scale(1.08);
+  border-left: 5px solid var(--millionaire-gold);
+  box-shadow: 0 0 15px var(--millionaire-orange);
+}
+#prize-list li.current .prize-number,
+#prize-list li.current .prize-amount {
+  color: var(--text-dark);
+}
+
+#prize-list li.safe-haven {
+  font-weight: bold;
+  color: var(--millionaire-gold);
+  border-left-color: var(--millionaire-gold);
+}
+#prize-list li.safe-haven .prize-amount {
+  color: var(--millionaire-gold);
+}
+
+#prize-list li.current.safe-haven {
+  color: var(--text-dark);
+}
+#prize-list li.current.safe-haven .prize-amount {
+  color: var(--text-dark);
+}
+
+/* Logo */
+.logo {
+  display: block;
+  margin: 0 auto 30px auto;
+  max-width: 300px;
+  width: 60%;
+  filter: drop-shadow(0 0 10px var(--millionaire-gold));
+  position: relative;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.logo-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  backface-visibility: hidden;
+}
+
+.logo-image.hidden-logo {
+  opacity: 0;
+  transform: rotateY(180deg);
+}
+
+.logo-image.visible-logo {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+/* Volume Controls */
+.volume-control-container {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.volume-control-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 1.1em;
+}
+
+#volume-slider {
+  /* Specific game screen slider */
+  width: 80%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  border-radius: 5px;
+}
+
+#volume-slider:hover {
+  opacity: 1;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ffcc00;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#volume-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #ffcc00;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+/* Common styles for all volume sliders using the class */
+.volume-slider-common {
+  width: 60%;
+  max-width: 250px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  border-radius: 5px;
+}
+
+.volume-slider-common:hover {
+  opacity: 1;
+}
+
+.volume-slider-common::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ffcc00;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-slider-common::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #ffcc00;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+/* Ensure the game screen slider retains its original width if it was different */
+#game-volume-control #volume-slider {
+  /* Already defined above, but good for clarity if it were separate */
+  width: 80%;
+}
+
+/* Common styles for mute buttons */
+.mute-btn-common {
+  background-color: #ffcc00;
+  color: #000033;
+  border: 1px solid #000033;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.99em;
+}
+
+.mute-btn-common:hover {
+  background-color: #e6b800;
+}
+
+/* Cheat Button Styles */
+#cheat-question-nav {
+  margin-top: 10px;
+  display: block;
+}
+
+#cheat-retry-q-btn {
+  display: none;
+  margin-top: 10px;
+}
+
+.cheat-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+#next-question-btn {
+  display: none;
+  margin: 20px auto;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--millionaire-deep-blue);
+  background-color: var(--millionaire-gold);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#next-question-btn:hover {
+  background-color: #ffe082;
+}
+
+/* Styles for Volume and Cheat Nav visibility (used by JS) */
+.volume-control-container.visible, /* This targets the container */
+#cheat-question-nav.visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+/* Initial hidden state for these is set in animations.css or directly on elements if preferred */

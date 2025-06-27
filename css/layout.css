@@ -1,0 +1,34 @@
+/* Layout styles for main page structure */
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0; /* Remove padding, panels will handle it */
+  max-width: 1600px;
+  width: 95%; /* Use percentage for better responsiveness */
+  margin: 20px auto;
+  background-color: transparent; /* Container itself is transparent */
+  border-radius: 0; /* No rounding on main container */
+  box-shadow: none; /* No shadow on main container */
+}
+
+.left-panel {
+  width: 68%; /* Slightly more space for Q&A */
+  background-color: transparent; /* Panel transparent, elements inside get color */
+  padding: 0; /* Handled by inner elements */
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center Q&A block vertically */
+}
+
+.right-panel {
+  width: 25%; /* Adjusted from 30% to make space for potential new elements */
+  padding: 20px;
+  background-color: #000033; /* Dark blue background */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes prize ladder to top, volume to bottom */
+  align-items: center;
+  border-left: 2px solid #ffcc00; /* Gold border */
+}

@@ -1,0 +1,116 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Validate HTML
+        run: |
+          echo "Validating HTML structure..."
+          if [ ! -f index.html ]; then
+            echo "Error: index.html not found!"
+            exit 1
+          fi
+
+          # Check for required directories
+          for dir in css scripts images sounds; do
+            if [ ! -d "$dir" ]; then
+              echo "Warning: Directory $dir not found!"
+            fi
+          done
+
+          echo "Basic validation complete."
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Test job (runs after deployment)
+  test:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - name: Test deployed site
+        run: |
+          echo "Testing deployed site availability..."
+
+          # Wait a moment for deployment to be fully ready
+          sleep 30
+
+          # Get the deployment URL from previous step
+          SITE_URL="${{ needs.deploy.outputs.page_url }}"
+
+          if [ -n "$SITE_URL" ]; then
+            echo "Testing site at: $SITE_URL"
+            
+            # Test if site is accessible
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
+            
+            if [ "$HTTP_STATUS" = "200" ]; then
+              echo "✅ Site is accessible (HTTP $HTTP_STATUS)"
+            else
+              echo "⚠️ Site returned HTTP status: $HTTP_STATUS"
+            fi
+            
+            # Test if main assets are accessible
+            for asset in "css/base.css" "scripts/script.js"; do
+              ASSET_URL="${SITE_URL%/}/$asset"
+              ASSET_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$ASSET_URL" || echo "000")
+              
+              if [ "$ASSET_STATUS" = "200" ]; then
+                echo "✅ Asset $asset is accessible"
+              else
+                echo "⚠️ Asset $asset returned HTTP status: $ASSET_STATUS"
+              fi
+            done
+          else
+            echo "⚠️ Could not determine deployment URL"
+          fi
+
+          echo "Deployment test complete!"

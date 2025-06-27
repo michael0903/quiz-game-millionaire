@@ -1,0 +1,310 @@
+/* Animation keyframes and classes */
+
+/* Fly-in animation preparation */
+.game-container.prepare-fly-in .lifelines {
+  transform: translateY(-300%);
+  opacity: 0;
+}
+.game-container.prepare-fly-in .lifeline {
+  color: transparent !important;
+  text-shadow: none !important;
+}
+.game-container.prepare-fly-in .question-container {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.game-container.prepare-fly-in .answers-container {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.game-container.prepare-fly-in .right-panel {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.game-container.prepare-fly-in #prize-list li {
+  transform: translateX(100%);
+  opacity: 0;
+  color: transparent !important;
+  text-shadow: none !important;
+}
+.game-container.prepare-fly-in #prize-list li .prize-number,
+.game-container.prepare-fly-in #prize-list li .prize-amount {
+  color: transparent !important;
+  text-shadow: none !important;
+}
+
+/* Base transitions for fly-in elements */
+.lifelines,
+.question-container,
+.answers-container,
+.right-panel {
+  transition: transform 4s cubic-bezier(0.3, 0, 0.5, 1.2), opacity 9s ease-out;
+}
+
+/* Fly-in animation activation */
+.game-container.animate-fly-in .lifelines,
+.game-container.animate-fly-in .question-container,
+.game-container.animate-fly-in .answers-container,
+.game-container.animate-fly-in .right-panel {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: transform 4s cubic-bezier(0.3, 0, 0.5, 1.2) 1s,
+    opacity 9s ease-out 1s;
+}
+
+/* Prize List Item Fly-in & Text Restoration */
+#prize-list li {
+  /* Base transitions for individual items */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.4, 2), opacity 0.3s ease-out,
+    color 0.5s ease-out, text-shadow 0.5s ease-out;
+}
+
+.game-container.animate-fly-in #prize-list li {
+  transform: translate(0, 0);
+  opacity: 1;
+  color: #b0b0b0; /* Default text color after restoration */
+}
+.game-container.animate-fly-in #prize-list li .prize-number {
+  color: #888;
+}
+.game-container.animate-fly-in #prize-list li .prize-amount {
+  color: #b0b0b0;
+}
+
+/* Staggered delays for prize list items */
+.game-container.animate-fly-in #prize-list li[data-level="0"] {
+  transition-delay: 6s, 6s, 8s, 8s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="1"] {
+  transition-delay: 6.1s, 6.1s, 8.1s, 8.1s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="2"] {
+  transition-delay: 6.2s, 6.2s, 8.2s, 8.2s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="3"] {
+  transition-delay: 6.3s, 6.3s, 8.3s, 8.3s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="4"] {
+  transition-delay: 6.4s, 6.4s, 8.4s, 8.4s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="5"] {
+  transition-delay: 6.5s, 6.5s, 8.5s, 8.5s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="6"] {
+  transition-delay: 6.6s, 6.6s, 8.6s, 8.6s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="7"] {
+  transition-delay: 6.7s, 6.7s, 8.7s, 8.7s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="8"] {
+  transition-delay: 6.8s, 6.8s, 8.8s, 8.8s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="9"] {
+  transition-delay: 6.9s, 6.9s, 8.9s, 8.9s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="10"] {
+  transition-delay: 7s, 7s, 9s, 9s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="11"] {
+  transition-delay: 7.1s, 7.1s, 9.1s, 9.1s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="12"] {
+  transition-delay: 7.2s, 7.2s, 9.2s, 9.2s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="13"] {
+  transition-delay: 7.3s, 7.3s, 9.3s, 9.3s;
+}
+.game-container.animate-fly-in #prize-list li[data-level="14"] {
+  transition-delay: 7.4s, 7.4s, 9.4s, 9.4s;
+}
+
+/* Text color restoration for specific prize list states */
+.game-container.animate-fly-in #prize-list li.current {
+  color: var(--text-dark);
+}
+.game-container.animate-fly-in #prize-list li.current .prize-number,
+.game-container.animate-fly-in #prize-list li.current .prize-amount {
+  color: var(--text-dark);
+}
+.game-container.animate-fly-in #prize-list li.safe-haven {
+  color: var(--millionaire-gold);
+}
+.game-container.animate-fly-in #prize-list li.safe-haven .prize-amount,
+.game-container.animate-fly-in #prize-list li.safe-haven .prize-number {
+  color: var(--millionaire-gold);
+}
+.game-container.animate-fly-in #prize-list li.current.safe-haven {
+  color: var(--text-dark);
+}
+.game-container.animate-fly-in #prize-list li.current.safe-haven .prize-amount,
+.game-container.animate-fly-in #prize-list li.current.safe-haven .prize-number {
+  color: var(--text-dark);
+}
+
+/* Restore text on lifelines */
+.game-container.animate-fly-in .lifeline {
+  color: var(--text-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition-property: color, text-shadow;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+  transition-delay: 6s;
+}
+
+/* Keyframe Animations */
+@keyframes pulse-orange {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--millionaire-gold),
+      0 0 10px var(--millionaire-gold);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px var(--millionaire-gold),
+      0 0 25px var(--millionaire-gold);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--millionaire-gold),
+      0 0 10px var(--millionaire-gold);
+  }
+}
+
+/* Keyframes for the correct answer flash effect */
+@keyframes correct-answer-flash {
+  0%,
+  40%,
+  80%,
+  100% {
+    /* States where it shows "correct" styles */
+    background-color: var(--correct-green);
+    border-color: #90ee90; /* Light green border for correct state */
+  }
+  20%,
+  60% {
+    /* States where it shows "selected" styles */
+    background-color: var(--millionaire-orange);
+    border-color: var(--millionaire-gold);
+  }
+}
+
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* --- New Animation for Game Won --- */
+@keyframes full-window-glow-pulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 70px 35px rgba(249, 176, 0, 0.35),
+      /* Inner gold glow */ inset 0 0 120px 60px rgba(255, 215, 0, 0.25); /* Softer, wider inner gold glow */
+  }
+  50% {
+    box-shadow: inset 0 0 100px 50px rgba(249, 176, 0, 0.55),
+      /* More intense inner gold glow */ inset 0 0 180px 90px
+        rgba(255, 215, 0, 0.4); /* Wider, more intense inner gold glow */
+  }
+}
+
+body.game-won-glow {
+  animation: full-window-glow-pulse 1.5s infinite ease-in-out;
+}
+
+/* Logo Spinning animation */
+@keyframes spin-logo {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+.logo.spinning .logo-image.visible-logo {
+  animation: spin-logo-face 1s forwards;
+}
+.logo.spinning .logo-image.hidden-logo {
+  animation: spin-logo-back 1s forwards;
+}
+
+@keyframes spin-logo-face {
+  0% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  49.99% {
+    transform: rotateY(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spin-logo-back {
+  0% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+  49.99% {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateY(-90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Fade In/Out Effects */
+.fade-in-effect {
+  animation: fadeInAnimation 0.5s ease-in-out forwards;
+}
+.fade-out-effect {
+  animation: fadeOutAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Initial hidden state for volume/cheat controls (managed by JS adding .visible) */
+.volume-control-container,
+#cheat-question-nav {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s; /* Delay visibility until opacity starts */
+}
