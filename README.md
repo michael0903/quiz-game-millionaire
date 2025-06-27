@@ -90,6 +90,55 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## ⚖️ Legal Disclaimer
+
+### Educational Purpose Only
+
+This project is created and shared **strictly for educational purposes only**. It is intended to demonstrate web development techniques, JavaScript programming concepts, and interactive game design principles.
+
+### Copyright Notice
+
+- **No Commercial Use**: This project is not intended for commercial use or profit
+- **Educational Fair Use**: Any copyrighted elements are used under fair use provisions for educational purposes
+- **Original Code**: All custom code, styling, and implementation is original work
+- **Inspiration Only**: This project is inspired by the general concept of quiz games and does not claim ownership of any game show formats
+
+### Trademark Disclaimer
+
+- **"Who Wants to Be a Millionaire?"** is a registered trademark of Sony Pictures Television
+- This project is **not affiliated with, endorsed by, or connected to** Sony Pictures Television or any official "Who Wants to Be a Millionaire?" entities
+- The use of the game show concept is for educational demonstration purposes only
+- All trademarks belong to their respective owners
+
+### Content Disclaimer
+
+- **Quiz Questions**: All questions and answers are original content or from public domain sources
+- **Audio Assets**: Any audio files are either original compositions or royalty-free/public domain content
+- **Visual Assets**: All visual elements are original creations or public domain resources
+- **No Copyrighted Content**: This project does not intentionally include any copyrighted material
+
+### Liability Limitation
+
+- This software is provided "AS IS" without warranty of any kind
+- The author(s) are not liable for any damages arising from the use of this software
+- Users assume all risks associated with using this educational project
+
+### DMCA Compliance
+
+If you believe any content in this repository infringes your copyright:
+
+1. Please contact the repository owner immediately
+2. Provide detailed information about the allegedly infringing content
+3. We will respond promptly and remove any legitimately infringing material
+
+### Open Source License
+
+This project is licensed under the MIT License, which permits educational use, modification, and distribution with proper attribution.
+
+**By using this project, you acknowledge that it is for educational purposes only and agree to use it responsibly and legally.**
+
+---
+
 ## 🎉 Acknowledgments
 
 - Inspired by the classic TV show "Who Wants To Be A Millionaire?"
